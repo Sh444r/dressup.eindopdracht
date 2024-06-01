@@ -1,6 +1,6 @@
 console.log("hello world")
 
-//!!!!hier begint input voor hallo zeggen
+//Hier begint code input voor groeten van user met 'Hallo (naam)'.
 
 console.log("hallo zeggen")
 
@@ -17,7 +17,7 @@ zegHalloButton.addEventListener('click', () => {
     }
 });
 
-// !!!!! random outfits genereren
+//Hier begint code om random outfits te genereren
 
 console.log("randomoutfits")
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const veranderOutfitButton = document.querySelector('#change-outfit-button');
     veranderOutfitButton.addEventListener('click', () => {
-        veranderOutfit();
+        veranderOutfit(); // Hiermee kan ik random outfits genereren.
     });
 });
 
@@ -44,14 +44,15 @@ function veranderOutfit() {
         'img/poppetje-onderkant-3.png'
     ];
 
-    let currentTopIndex = Math.floor(Math.random() * tops.length);
-    let currentRokIndex = Math.floor(Math.random() * rokken.length);
+    let currentTopIndex = Math.floor(Math.random() * tops.length);  // Hiermee kan ik random topjes genereren
+    let currentRokIndex = Math.floor(Math.random() * rokken.length);// Hiermee kan ik random rokjes genereren
+
 
     const topImg = document.querySelector('#current-top');
     const rokImg = document.querySelector('#current-rok');
     const popjeContainer = document.querySelector('#aankleedpopje-leeg'); 
 
-// Functie om huidige outfit random te veranderen
+// Functie om huidige outfit random te veranderen.
 function updateOutfit() {
     topImg.src = tops[currentTopIndex];
     rokImg.src = rokken[currentRokIndex];
@@ -60,14 +61,17 @@ function updateOutfit() {
 
 updateOutfit();
 
+    // Met addEventListener kan ik op het drukken van random outfit, random outfits krijgen.
     document.querySelector('#change-outfit-button').addEventListener('click', () => {
         currentTopIndex = Math.floor(Math.random() * tops.length);
         currentRokIndex = Math.floor(Math.random() * rokken.length);
         updateOutfit();
     });
 }
+// random outfits genereren code met behulp van bron: https://www.w3schools.com/js/js_random.asp
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
-//!!!! outfit kiezen met verander top/rok butttons
+//Hier begint code om outfit te kiezen met 'verander top/rok' butttons
 
 document.addEventListener('DOMContentLoaded', () => {
     const topImg = document.querySelector('#current-top');
@@ -90,7 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let currentTopIndex = 0;
     let currentRokIndex = 0;
-    
+
+    // Door addEventListener kan ik door op 'Verander top/rok' de top of rok veranderen
     document.querySelector('#change-top').addEventListener('click', () => {
         currentTopIndex = (currentTopIndex + 1) % tops.length;
         topImg.src = tops[currentTopIndex];
@@ -101,27 +106,33 @@ document.addEventListener('DOMContentLoaded', () => {
         rokImg.src = rokken[currentRokIndex];
     });
 } )
+// met behulp van bron: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 
-//!!!!hier begint settimeout voor wanneer je op klaar klikt en de poppetje groter wordt
+//Hier begint code van settimeout voor wanneer je op klaar klikt en het poppetje groter wordt en er sparkles bijkomen.
 
 console.log("Aankleedpopje");
 
 function groterpopjeContainer() {
     const popjeContainer = document.querySelector('#aankleedpopje-leeg');
+    const sparkles = document.querySelector('#sparkles');
+
     popjeContainer.classList.add('groter');
+    sparkles.style.display = 'block';
 
-
+    
     setTimeout(() => {
-        popje.classList.remove('groter');
-    }, 2000);
-}
+        popjeContainer.classList.remove('groter');
+        sparkles.style.display = 'none';
+    }, 2000);// Na 2 seconden, wordt het popje weer kleiner en verdwijnen de sparkles.
+} 
 
 
 document.querySelector('#klaar').addEventListener('click', () => {
     groterpopjeContainer(); 
 });
+// animatie img van sparkles met behulp van bron: https://www.w3schools.com/jsref/prop_style_display.asp
 
-// setinterval, checken van user activity
+//Hier begint code van setinterval waarbij er gecheckt wordt op  user activity, na 2 minuten alert van of user nog gebruik maakt van de game.
 
 function checkUserActiviteit() {
     if ("hallo") {
@@ -129,5 +140,6 @@ function checkUserActiviteit() {
     }
 }
 
-setInterval(checkUserActiviteit, 60000); 
+setInterval(checkUserActiviteit, 120000); // na 2 minuten useractiviteit bericht
+
 // met behulp van bron https://stackoverflow.com/questions/39801295/how-to-wait-a-certain-interval-then-check-for-user-activity-and-fire-code-and-s
