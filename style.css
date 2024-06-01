@@ -9,7 +9,6 @@ body {
 }
 
 main {
-    /* margin: 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +26,6 @@ p {
     justify-content: space-between;
     width: 20%;
     max-width: 100%;
-    /* margin-top: 5px; */
     position: relative;
 }
 
