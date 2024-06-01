@@ -1,26 +1,33 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #f0f0f0;
+    background-image: url('img/background.png');
+    background-size: cover; 
+    background-position: center;
     margin: 0;
     padding: 0;
 }
 
 main {
-    margin: 20px;
+    /* margin: 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
+p {
+    font-size: 30px;
+    font-weight: 300;
+}
+
 #aankleedpopje-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 25%;
+    width: 20%;
     max-width: 100%;
-    margin-top: 20px;
+    /* margin-top: 5px; */
     position: relative;
 }
 
@@ -51,7 +58,7 @@ main {
 
 button {
     margin: 5px;
-    padding: 10px 20px;
+    padding: 10px 20px ;
     font-size: 20px;
 }
 
@@ -59,12 +66,23 @@ button {
     display: flex;
     flex-direction: column;
     align-items: flex-end; 
+    justify-content: center;
     width: 80%;
     margin-top: 3em;
 }
 
-.enlarged {
-    transform: scale(1.5); /* Increase the scale of the container */
-    transition: transform 0.3s ease; /* Add a smooth transition effect */
+.groter {
+    transform: scale(1.2);
+    transition: transform 0.3s ease; 
 }
 
+h1 {
+    font-size: large;
+}
+
+#input-name {
+    padding: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

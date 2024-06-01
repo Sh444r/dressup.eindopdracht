@@ -1,6 +1,7 @@
 console.log("hello world")
 
 //!!!!hier begint input voor hallo zeggen
+
 console.log("hallo zeggen")
 
 const userInput = document.querySelector('#user-input');
@@ -10,7 +11,7 @@ const antwoord = document.querySelector('#antwoord');
 zegHalloButton.addEventListener('click', () => {
     const naam = userInput.value.trim();
     if (naam) {
-        antwoord.textContent = `Hey, ${naam}!`;
+        antwoord.textContent = `Hey, ${naam}!`; 
     } else {
         antwoord.textContent = 'Hallo!';
     }
@@ -22,16 +23,15 @@ console.log("randomoutfits")
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    changeOutfit();
+    veranderOutfit();
 
-
-    const changeOutfitButton = document.querySelector('#change-outfit-button');
-    changeOutfitButton.addEventListener('click', () => {
-        changeOutfit();
+    const veranderOutfitButton = document.querySelector('#change-outfit-button');
+    veranderOutfitButton.addEventListener('click', () => {
+        veranderOutfit();
     });
 });
 
-function changeOutfit() {
+function veranderOutfit() {
     const tops = [
         'img/poppetje-bovenkant-1.png',
         'img/poppetje-bovenkant-2.png',
@@ -49,7 +49,7 @@ function changeOutfit() {
 
     const topImg = document.querySelector('#current-top');
     const rokImg = document.querySelector('#current-rok');
-    const dollContainer = document.querySelector('#aankleedpopje-leeg'); 
+    const popjeContainer = document.querySelector('#aankleedpopje-leeg'); 
 
 // Functie om huidige outfit random te veranderen
 function updateOutfit() {
@@ -67,7 +67,7 @@ updateOutfit();
     });
 }
 
-// outfit kiezen met verander top/rok butttons
+//!!!! outfit kiezen met verander top/rok butttons
 
 document.addEventListener('DOMContentLoaded', () => {
     const topImg = document.querySelector('#current-top');
@@ -106,27 +106,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 console.log("Aankleedpopje");
 
-function enlargeDollContainer() {
-    const dollContainer = document.querySelector('#aankleedpopje-leeg');
-    dollContainer.classList.add('enlarged');
+function groterpopjeContainer() {
+    const popjeContainer = document.querySelector('#aankleedpopje-leeg');
+    popjeContainer.classList.add('groter');
 
 
     setTimeout(() => {
-        dollContainer.classList.remove('enlarged');
+        popje.classList.remove('groter');
     }, 2000);
 }
 
 
 document.querySelector('#klaar').addEventListener('click', () => {
-    enlargeDollContainer(); 
+    groterpopjeContainer(); 
 });
 
 // setinterval, checken van user activity
 
-function checkUserActivity() {
+function checkUserActiviteit() {
     if ("hallo") {
         alert('Ben je er nog?');
     }
 }
 
-setInterval(checkUserActivity, 60000);
+setInterval(checkUserActiviteit, 60000); 
+// met behulp van bron https://stackoverflow.com/questions/39801295/how-to-wait-a-certain-interval-then-check-for-user-activity-and-fire-code-and-s
