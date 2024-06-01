@@ -1,4 +1,81 @@
+console.log("hello world")
+
+//!!!!hier begint input voor hallo zeggen
+console.log("hallo zeggen")
+
+const userInput = document.querySelector('#user-input');
+const zegHalloButton = document.querySelector('#zeg-hallo-button');
+const antwoord = document.querySelector('#antwoord');
+
+zegHalloButton.addEventListener('click', () => {
+    const naam = userInput.value.trim();
+    if (naam) {
+        antwoord.textContent = `Hey, ${naam}!`;
+    } else {
+        antwoord.textContent = 'Hallo!';
+    }
+});
+
+// !!!!! random outfits genereren
+
+console.log("randomoutfits")
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    changeOutfit();
+
+
+    const changeOutfitButton = document.querySelector('#change-outfit-button');
+    changeOutfitButton.addEventListener('click', () => {
+        changeOutfit();
+    });
+});
+
+function changeOutfit() {
+    const tops = [
+        'img/poppetje-bovenkant-1.png',
+        'img/poppetje-bovenkant-2.png',
+        'img/poppetje-bovenkant-3.png'
+    ];
+
+    const rokken = [
+        'img/poppetje-onderkant-1.png',
+        'img/poppetje-onderkant-2.png',
+        'img/poppetje-onderkant-3.png'
+    ];
+
+    let currentTopIndex = Math.floor(Math.random() * tops.length);
+    let currentRokIndex = Math.floor(Math.random() * rokken.length);
+
+    const topImg = document.querySelector('#current-top');
+    const rokImg = document.querySelector('#current-rok');
+    const dollContainer = document.querySelector('#aankleedpopje-leeg'); 
+
+// Functie om huidige outfit random te veranderen
+function updateOutfit() {
+    topImg.src = tops[currentTopIndex];
+    rokImg.src = rokken[currentRokIndex];
+}
+
+
+updateOutfit();
+
+    document.querySelector('#change-outfit-button').addEventListener('click', () => {
+        currentTopIndex = Math.floor(Math.random() * tops.length);
+        currentRokIndex = Math.floor(Math.random() * rokken.length);
+        updateOutfit();
+    });
+}
+
+// outfit kiezen met verander top/rok butttons
+
+document.addEventListener('DOMContentLoaded', () => {
+    const topImg = document.querySelector('#current-top');
+    const rokImg = document.querySelector('#current-rok');
+    
+    topImg.src = ''; 
+    rokImg.src = ''; 
+
     const tops = [
         'img/poppetje-bovenkant-1.png',
         'img/poppetje-bovenkant-2.png',
@@ -14,55 +91,42 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTopIndex = 0;
     let currentRokIndex = 0;
     
-    const topImg = document.getElementById('current-top');
-    const rokImg = document.getElementById('current-rok');
-    
-    document.getElementById('change-top').addEventListener('click', () => {
+    document.querySelector('#change-top').addEventListener('click', () => {
         currentTopIndex = (currentTopIndex + 1) % tops.length;
         topImg.src = tops[currentTopIndex];
     });
 
-    document.getElementById('change-rok').addEventListener('click', () => {
+    document.querySelector('#change-rok').addEventListener('click', () => {
         currentRokIndex = (currentRokIndex + 1) % rokken.length;
         rokImg.src = rokken[currentRokIndex];
     });
+} )
 
-    // Add similar functionality for shoes if needed
+//!!!!hier begint settimeout voor wanneer je op klaar klikt en de poppetje groter wordt
 
-    document.getElementById('done-button').addEventListener('click', () => {
-        // Trigger confetti effect
-        triggerConfetti();
-    });
-});
+console.log("Aankleedpopje");
 
-// Function to trigger confetti effect
-function triggerConfetti() {
-    const duration = 5 * 1000; // Duration of the confetti effect in milliseconds (5 seconds)
-    const animationEnd = Date.now() + duration;
+function enlargeDollContainer() {
+    const dollContainer = document.querySelector('#aankleedpopje-leeg');
+    dollContainer.classList.add('enlarged');
 
-    // Function to create a single confetti particle
-    function createConfetti() {
-        confetti({
-            particleCount: 100, // Number of confetti particles
-            spread: 160, // Spread of the confetti particles
-            origin: { y: 0.6 } // Origin of the confetti particles (from the top)
-        });
-    }
 
-    // Function to continuously create confetti particles until the animation end time
-    function loop() {
-        const now = Date.now();
-        if (now < animationEnd) {
-            requestAnimationFrame(loop);
-        }
-        createConfetti();
-    }
-
-    loop(); // Start the confetti animation
+    setTimeout(() => {
+        dollContainer.classList.remove('enlarged');
+    }, 2000);
 }
 
-// Event listener for the "Done" button
-document.getElementById('done-button').addEventListener('click', () => {
-    // Trigger confetti effect when the "Done" button is clicked
-    triggerConfetti();
+
+document.querySelector('#klaar').addEventListener('click', () => {
+    enlargeDollContainer(); 
 });
+
+// setinterval, checken van user activity
+
+function checkUserActivity() {
+    if ("hallo") {
+        alert('Ben je er nog?');
+    }
+}
+
+setInterval(checkUserActivity, 60000);

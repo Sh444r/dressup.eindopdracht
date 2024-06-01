@@ -63,6 +63,8 @@ button {
     margin-top: 3em;
 }
 
-
-
+.enlarged {
+    transform: scale(1.5); /* Increase the scale of the container */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
 
